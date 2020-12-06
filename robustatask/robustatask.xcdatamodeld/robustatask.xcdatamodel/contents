@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17192" systemVersion="20B50" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="RepositoryModel" representedClassName="RepositoryModel" syncable="YES">
+        <attribute name="createdDate" optional="YES" attributeType="String"/>
         <attribute name="fullName" optional="YES" attributeType="String"/>
         <attribute name="idAPI" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="name" optional="YES" attributeType="String"/>
@@ -17,7 +18,7 @@
         <relationship name="repoRelationship" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RepositoryModel" inverseName="ownerRelationship" inverseEntity="RepositoryModel"/>
     </entity>
     <elements>
-        <element name="RepositoryModel" positionX="-63" positionY="-18" width="128" height="119"/>
+        <element name="RepositoryModel" positionX="-63" positionY="-18" width="128" height="134"/>
         <element name="RepositoryOwnerModel" positionX="169.1290893554688" positionY="101.9804077148438" width="128" height="119"/>
     </elements>
 </model>

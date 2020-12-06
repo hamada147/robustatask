@@ -12,6 +12,7 @@
 
 @interface RepositoriesConnector : ConnectorBase
 -(void)getRepositories:(int)since;
+-(void)getRepoDetails:(int)ID;
 -(ResponseBase*)createResponseFor:(RequestBase*)request;
 @end
 

@@ -13,8 +13,17 @@
 
 -(void)mapCustomFieldsfromDictionary:(NSDictionary*)dictionary
 {
-    NSArray* array = (NSArray*)dictionary;
-    [self mapRepoList:array];
+    if ([dictionary isKindOfClass:[NSDictionary class]])
+    {
+        Repository* repository = [[Repository alloc] init];
+        [repository mapCustomFieldsfromDictionary:dictionary];
+        self.repositories = [[NSArray alloc] initWithObjects:repository, nil];
+    }
+    else
+    {
+        NSArray* array = (NSArray*)dictionary;
+        [self mapRepoList:array];
+    }
 }
 
 -(void)mapRepoList:(NSArray*)repos

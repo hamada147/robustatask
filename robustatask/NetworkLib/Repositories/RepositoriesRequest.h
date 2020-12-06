@@ -10,4 +10,5 @@
 
 @interface RepositoriesRequest : RequestBase
 -(id)initWithSince:(int)since;
+-(id)initWithId:(int)ID;
 @end

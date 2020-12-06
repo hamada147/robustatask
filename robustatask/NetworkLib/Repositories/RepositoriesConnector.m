@@ -18,6 +18,12 @@
     [self processRequest:request];
 }
 
+-(void)getRepoDetails:(int)ID
+{
+    RepositoriesRequest* request = [[RepositoriesRequest alloc] initWithId:ID];
+    [self processRequest:request];
+}
+
 -(ResponseBase*)createResponseFor:(RequestBase*)request
 {
     if ([request isKindOfClass:[RepositoriesRequest class]])

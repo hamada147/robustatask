@@ -11,6 +11,7 @@ import UIKit
 
 protocol RepositoriesRepositoryInterface {
     func getRepositories(since: Int)
+    func getRepoDetails(id: Int)
     func searchRepo(search: String)
 }
 
@@ -23,6 +24,7 @@ protocol RepositoryDelegate {
 class RepositoriesRepository: NSObject, RepositoriesRepositoryInterface, ConnectorDelegate {
     
     var delegate: RepositoryDelegate? = nil
+    lazy var connector = RepositoriesConnector(delegate: self)
     
     init(delegate: RepositoryDelegate) {
         super.init()
@@ -31,8 +33,7 @@ class RepositoriesRepository: NSObject, RepositoriesRepositoryInterface, Connect
     
     func getRepositories(since: Int) {
         if (Reachability.isConnectedToNetwork()) {
-            let connector = RepositoriesConnector(delegate: self)
-            connector?.getRepositories(Int32(since))
+            self.connector?.getRepositories(Int32(since))
         } else {
             let appDelegate = UIApplication.shared.delegate as! AppDelegate
             let managedContext = appDelegate.persistentContainer.viewContext
@@ -46,6 +47,16 @@ class RepositoriesRepository: NSObject, RepositoriesRepositoryInterface, Connect
                 let error = ErrorResponse(error.localizedDescription)
                 self.delegate?.onFailed(error: error!)
             }
+        }
+    }
+    
+    func getRepoDetails(id: Int) {
+        if (Reachability.isConnectedToNetwork()) {
+            self.connector?.getRepoDetails(Int32(id))
+        } else {
+            LoggingManager.logError("No internet connection")
+            let error = ErrorResponse("No internet connection")
+            self.delegate?.onFailed(error: error!)
         }
     }
     
@@ -84,10 +95,26 @@ class RepositoriesRepository: NSObject, RepositoriesRepositoryInterface, Connect
 
         let owner = RepositoryOwnerModel(context: managedContext)
         owner.idAPI = repo.owner.id
-        owner.avatarURL = repo.owner.avatarURL
-        owner.gravatarId = repo.owner.gravatarId
-        owner.login = repo.owner.login
-        owner.url = repo.owner.url
+        if (repo.owner.avatarURL != nil) {
+            owner.avatarURL = repo.owner.avatarURL
+        } else {
+            owner.avatarURL = ""
+        }
+        if (repo.owner.gravatarId != nil) {
+            owner.gravatarId = repo.owner.gravatarId
+        } else {
+            owner.gravatarId = ""
+        }
+        if (repo.owner.login != nil) {
+            owner.login = repo.owner.login
+        } else {
+            owner.login = ""
+        }
+        if (repo.owner.url != nil) {
+            owner.url = repo.owner.url
+        } else {
+            owner.url = ""
+        }
         
         let repo2 = RepositoryModel(context: managedContext)
         repo2.idAPI = repo.id
@@ -103,6 +130,24 @@ class RepositoriesRepository: NSObject, RepositoriesRepositoryInterface, Connect
         }
         
         return repo2
+    }
+    
+    private func update(repo: Repository) {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let managedContext = appDelegate.persistentContainer.viewContext
+        let request = RepositoryModel.createFetchRequest()
+        request.predicate = NSPredicate(format: "idAPI == \(repo.id)")
+        
+        do {
+            let repo2 = try managedContext.fetch(request)
+            if (repo2.count >= 1) {
+                repo2[0].createdDate = repo.created_at
+            } else {
+                let _ = self.save(repo: repo)
+            }
+        } catch let error as NSError {
+            LoggingManager.logError(error.localizedDescription)
+        }
     }
     
     // MARK:- ConnectorDelegate

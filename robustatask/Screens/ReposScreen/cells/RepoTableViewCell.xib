@@ -41,20 +41,30 @@
                             <constraint firstAttribute="height" constant="32" id="b0R-zb-Gjr"/>
                         </constraints>
                     </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Creation Date: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H9m-ky-0I5">
+                        <rect key="frame" x="0.0" y="72" width="320" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
                     <constraint firstItem="Dsn-cB-mDO" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="7Ko-GF-iWd"/>
+                    <constraint firstItem="H9m-ky-0I5" firstAttribute="top" secondItem="fTh-ok-y6g" secondAttribute="bottom" constant="5" id="NSk-oi-uJ6"/>
                     <constraint firstItem="fTh-ok-y6g" firstAttribute="top" secondItem="Dsn-cB-mDO" secondAttribute="bottom" constant="5" id="U3n-kr-Odk"/>
                     <constraint firstAttribute="trailing" secondItem="Dsn-cB-mDO" secondAttribute="trailing" id="YXh-vX-hfT"/>
+                    <constraint firstItem="H9m-ky-0I5" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="b5m-oM-0kv"/>
                     <constraint firstAttribute="trailing" secondItem="fTh-ok-y6g" secondAttribute="trailing" id="cxb-tn-O4K"/>
                     <constraint firstItem="fTh-ok-y6g" firstAttribute="leading" secondItem="LfN-Nr-t7X" secondAttribute="trailing" constant="5" id="hfj-S3-Qhw"/>
                     <constraint firstItem="LfN-Nr-t7X" firstAttribute="top" secondItem="Dsn-cB-mDO" secondAttribute="bottom" constant="5" id="mNC-GQ-4bR"/>
                     <constraint firstItem="Dsn-cB-mDO" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="rRE-4o-R79"/>
+                    <constraint firstAttribute="trailing" secondItem="H9m-ky-0I5" secondAttribute="trailing" id="roR-yI-IQd"/>
                     <constraint firstItem="LfN-Nr-t7X" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="vaR-Jg-i7s"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="creationDateLbl" destination="H9m-ky-0I5" id="an6-5w-2Oc"/>
                 <outlet property="reoAuthorName" destination="fTh-ok-y6g" id="xxL-ek-g4C"/>
                 <outlet property="repoAuthorImg" destination="LfN-Nr-t7X" id="kyI-6t-EM6"/>
                 <outlet property="repoNameLbl" destination="Dsn-cB-mDO" id="REY-Ze-y1e"/>

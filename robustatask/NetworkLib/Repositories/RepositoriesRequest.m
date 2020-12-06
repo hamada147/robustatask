@@ -31,4 +31,15 @@
     return self;
 }
 
+-(id)initWithId:(int)ID
+{
+    self = [super init];
+    if (self)
+    {
+        self.HTTPMethod = @"GET";
+        self.restMethodName = [NSString stringWithFormat:@"repositories/%d", ID];
+    }
+    return self;
+}
+
 @end
