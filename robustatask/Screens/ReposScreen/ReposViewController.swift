@@ -12,32 +12,57 @@ class ReposViewController: UIViewController {
     // MARK:- Outlets
     @IBOutlet weak var reposTableView: UITableView!
     
+    var vm: ReposViewModel = ReposViewModel()
+    
+    var repos: [RepositoryModel] = [] {
+        didSet {
+            DispatchQueue.main.async {
+                self.reposTableView?.reloadData()
+            }
+        }
+    }
+    
     // MARK:- Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        self.vm.delegate = self
+        self.initUI()
+        self.vm.getRepositories(since: 0)
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        let connector = RepositoriesConnector(delegate: self)
-        connector?.getRepositories(0)
+    private func initUI() {
+        self.reposTableView.register(UINib(nibName: "RepoTableViewCell", bundle: nil), forCellReuseIdentifier: "RepoTableViewCell")
+        self.reposTableView.delegate = self
+        self.reposTableView.dataSource = self
+        self.reposTableView.tableFooterView = UIView()
     }
-
-
 }
 
-extension ReposViewController: ConnectorDelegate {
-    func callCompleted(_ response: Any!) {
-        if (response is RepositoriesResponse) {
-            let actualResponse = response as! RepositoriesResponse
-            let repos = actualResponse.repositories as? [Repository]
-        } else {
-            // TODO: Show error here
-        }
+extension ReposViewController: UITableViewDelegate, UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
     }
     
-    func callFailed(_ response: ErrorResponse!) {
-        // TODO: Show error here
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.repos.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "RepoTableViewCell") as! RepoTableViewCell
+        cell.textLabel?.text = self.repos[indexPath.row].fullName
+        return cell
+    }
+}
+
+extension ReposViewController: ReposViewModelDelegate {
+    func didGetRepositories(_ repos: [RepositoryModel]) {
+        self.repos = repos
+    }
+    
+    func errorInRetrivingData(error: ErrorResponse) {
+        DispatchQueue.main.async {
+            // TODO: Show Error UI Here
+        }
     }
 }

@@ -38,9 +38,7 @@ class RepositoriesRepository: NSObject, RepositoriesRepositoryInterface, Connect
             
             do {
                 let repos = try managedContext.fetch(request)
-                let response = RepositoriesResponse()
-                response.repositories = repos
-                self.delegate?.onSuccess(response: response)
+                self.delegate?.onSuccess(response: repos)
             } catch let error as NSError {
                 LoggingManager.logError(error.localizedDescription)
                 let error = ErrorResponse(error.localizedDescription)
@@ -49,7 +47,15 @@ class RepositoriesRepository: NSObject, RepositoriesRepositoryInterface, Connect
         }
     }
     
-    private func save(repo: Repository) {
+    private func save(repos: [Repository]) -> [RepositoryModel] {
+        var repos2: [RepositoryModel] = []
+        for repo in repos {
+            repos2.append(self.save(repo: repo))
+        }
+        return repos2
+    }
+    
+    private func save(repo: Repository) -> RepositoryModel {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let managedContext = appDelegate.persistentContainer.viewContext
 
@@ -72,6 +78,8 @@ class RepositoriesRepository: NSObject, RepositoriesRepositoryInterface, Connect
         } catch let error as NSError {
             LoggingManager.logError(error.localizedDescription)
         }
+        
+        return repo2
     }
     
     // MARK:- ConnectorDelegate
@@ -79,10 +87,10 @@ class RepositoriesRepository: NSObject, RepositoriesRepositoryInterface, Connect
         if (response is RepositoriesResponse) {
             let actualResponse = response as! RepositoriesResponse
             if let repos = actualResponse.repositories as? [Repository] {
-                for repo in repos {
-                    self.save(repo: repo)
+                DispatchQueue.main.async {
+                    let result = self.save(repos: repos)
+                    self.delegate?.onSuccess(response: result)
                 }
-                self.delegate?.onSuccess(response: actualResponse)
             }
         }
     }
