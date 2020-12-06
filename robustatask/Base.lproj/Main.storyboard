@@ -52,6 +52,7 @@
                     <connections>
                         <outlet property="loadingIndicator" destination="dz2-uk-r5g" id="hTH-M0-wmQ"/>
                         <outlet property="reposTableView" destination="FHb-UY-eOQ" id="FUE-N8-ugZ"/>
+                        <outlet property="searchBar" destination="hqG-r9-P8d" id="qII-X8-Trg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

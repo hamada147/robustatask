@@ -11,11 +11,13 @@ import UIKit
 
 protocol RepositoriesRepositoryInterface {
     func getRepositories(since: Int)
+    func searchRepo(search: String)
 }
 
 protocol RepositoryDelegate {
     func onSuccess(response: Any)
     func onFailed(error: ErrorResponse)
+    func onSearchFinish(result: Any?)
 }
 
 class RepositoriesRepository: NSObject, RepositoriesRepositoryInterface, ConnectorDelegate {
@@ -43,6 +45,27 @@ class RepositoriesRepository: NSObject, RepositoriesRepositoryInterface, Connect
                 LoggingManager.logError(error.localizedDescription)
                 let error = ErrorResponse(error.localizedDescription)
                 self.delegate?.onFailed(error: error!)
+            }
+        }
+    }
+    
+    func searchRepo(search: String) {
+        DispatchQueue.main.async {
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            let managedContext = appDelegate.persistentContainer.viewContext
+            let request = RepositoryModel.createFetchRequest()
+            request.predicate = NSPredicate(format: "fullName CONTAINS[c] '\(search)'")
+            
+            do {
+                let repo = try managedContext.fetch(request)
+                if (repo.count >= 1) {
+                    self.delegate?.onSearchFinish(result: repo[0])
+                } else {
+                    self.delegate?.onSearchFinish(result: nil)
+                }
+            } catch let error as NSError {
+                LoggingManager.logError(error.localizedDescription)
+                self.delegate?.onSearchFinish(result: nil)
             }
         }
     }

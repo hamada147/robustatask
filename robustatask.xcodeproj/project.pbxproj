@@ -216,8 +216,8 @@
 			isa = PBXGroup;
 			children = (
 				049C7E49257CEDCA00983E8B /* cells */,
-				04843F31257D1DC6006FBD21 /* ReposViewModel.swift */,
 				04F8CFA3257940E300E247F1 /* ReposViewController.swift */,
+				04843F31257D1DC6006FBD21 /* ReposViewModel.swift */,
 			);
 			path = ReposScreen;
 			sourceTree = "<group>";

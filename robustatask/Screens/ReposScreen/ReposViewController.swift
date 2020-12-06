@@ -12,6 +12,7 @@ class ReposViewController: UIViewController {
     // MARK:- Outlets
     @IBOutlet weak var reposTableView: UITableView!
     @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var searchBar: UISearchBar!
     var refreshControl = UIRefreshControl()
     
     var vm: ReposViewModel = ReposViewModel()
@@ -45,6 +46,8 @@ class ReposViewController: UIViewController {
         self.reposTableView.delegate = self
         self.reposTableView.dataSource = self
         self.reposTableView.tableFooterView = UIView()
+        
+        self.searchBar.delegate = self
     }
     
     @objc
@@ -83,6 +86,10 @@ extension ReposViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 130.0
     }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        self.dismissKeyboard()
+    }
 }
 
 extension ReposViewController: ReposViewModelDelegate {
@@ -99,3 +106,17 @@ extension ReposViewController: ReposViewModelDelegate {
         }
     }
 }
+
+extension ReposViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if (searchText.count >= 2) {
+            self.since = 0
+            self.loadingIndicator.isHidden = false
+            self.vm.searchRepo(search: searchText)
+        } else {
+            self.loadingIndicator.isHidden = false
+            self.vm.getRepositories(since: self.since)
+        }
+    }
+}
+ 

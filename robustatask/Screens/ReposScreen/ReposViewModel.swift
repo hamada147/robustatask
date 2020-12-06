@@ -19,6 +19,10 @@ class ReposViewModel {
     func getRepositories(since: Int) {
         self.reposity.getRepositories(since: since)
     }
+    
+    func searchRepo(search: String) {
+        self.reposity.searchRepo(search: search)
+    }
 }
 
 extension ReposViewModel: RepositoryDelegate {
@@ -33,5 +37,12 @@ extension ReposViewModel: RepositoryDelegate {
     
     func onFailed(error: ErrorResponse) {
         self.delegate?.errorInRetrivingData(error: error)
+    }
+    
+    func onSearchFinish(result: Any?) {
+        if (result != nil) {
+            let actulResult = result as! RepositoryModel
+            self.delegate?.didGetRepositories([actulResult])
+        }
     }
 }
