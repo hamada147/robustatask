@@ -8,3 +8,5 @@
 #import "LoggingManager.h"
 #import "RepositoriesConnector.h"
 #import "RepositoriesResponse.h"
+#import "RepositoryOwner.h"
+#import "Repository.h"

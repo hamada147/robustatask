@@ -134,12 +134,12 @@
 		049C7E16257CE79500983E8B /* Repositories */ = {
 			isa = PBXGroup;
 			children = (
-				049C7E17257CE79500983E8B /* RepositoriesResponse.m */,
 				049C7E18257CE79500983E8B /* RepositoriesConnector.h */,
+				049C7E1C257CE79500983E8B /* RepositoriesConnector.m */,
+				049C7E1B257CE79500983E8B /* RepositoriesRequest.h */,
 				049C7E19257CE79500983E8B /* RepositoriesRequest.m */,
 				049C7E1A257CE79500983E8B /* RepositoriesResponse.h */,
-				049C7E1B257CE79500983E8B /* RepositoriesRequest.h */,
-				049C7E1C257CE79500983E8B /* RepositoriesConnector.m */,
+				049C7E17257CE79500983E8B /* RepositoriesResponse.m */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
