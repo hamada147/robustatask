@@ -63,8 +63,18 @@ extension ReposViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "RepoTableViewCell") as! RepoTableViewCell
-        cell.textLabel?.text = self.repos[indexPath.row].fullName
+        cell.repoNameLbl.text = self.repos[indexPath.row].name
+        cell.repoDescLbl.text = self.repos[indexPath.row].repositoryDescription
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        // TODO: navigate to another screen
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 120.0
     }
 }
 

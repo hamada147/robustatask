@@ -9,6 +9,11 @@ import UIKit
 
 class RepoTableViewCell: UITableViewCell {
 
+    // MARK:- Outlets
+    @IBOutlet weak var repoNameLbl: UILabel!
+    @IBOutlet weak var repoDescLbl: UILabel!
+    
+    // MARK:- Lifecycle
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
