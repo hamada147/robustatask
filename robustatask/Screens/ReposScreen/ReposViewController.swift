@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  ReposViewController.swift
 //  robustatask
 //
 //  Created by Moussa on 03/12/2020.
@@ -7,8 +7,12 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ReposViewController: UIViewController {
 
+    // MARK:- Outlets
+    @IBOutlet weak var reposTableView: UITableView!
+    
+    // MARK:- Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -23,14 +27,11 @@ class ViewController: UIViewController {
 
 }
 
-extension ViewController: ConnectorDelegate {
+extension ReposViewController: ConnectorDelegate {
     func callCompleted(_ response: Any!) {
         if (response is RepositoriesResponse) {
             let actualResponse = response as! RepositoriesResponse
             let repos = actualResponse.repositories as? [Repository]
-            
-            print(repos?.count ?? 0)
-            
         } else {
             // TODO: Show error here
         }

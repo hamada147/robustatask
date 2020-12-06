@@ -13,6 +13,8 @@
 @interface ErrorResponse : NSObject
 @property (nonatomic) BOOL* isSuccess;
 @property (strong, nonatomic) NSString* errorMessage;
+
+-(id)initWith:(NSString*)error;
 @end
 
 #endif /* ErrorResponse_h */
