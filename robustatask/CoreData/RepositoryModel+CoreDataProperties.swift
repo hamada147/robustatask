@@ -2,7 +2,7 @@
 //  RepositoryModel+CoreDataProperties.swift
 //  robustatask
 //
-//  Created by Moussa on 06/12/2020.
+//  Created by Moussa on 07/12/2020.
 //
 //
 
@@ -20,6 +20,7 @@ extension RepositoryModel {
     @NSManaged public var name: String
     @NSManaged public var repositoryDescription: String
     @NSManaged public var url: String
+    @NSManaged public var createdDate: String
     @NSManaged public var ownerRelationship: RepositoryOwnerModel?
 
 }
