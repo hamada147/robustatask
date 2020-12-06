@@ -15,7 +15,7 @@ protocol RepositoriesRepositoryInterface {
     func searchRepo(search: String)
 }
 
-protocol RepositoryDelegate {
+protocol RepositoryDelegate: class {
     func onSuccess(response: Any)
     func onFailed(error: ErrorResponse)
     func onSearchFinish(result: Any?)
@@ -23,7 +23,7 @@ protocol RepositoryDelegate {
 
 class RepositoriesRepository: NSObject, RepositoriesRepositoryInterface, ConnectorDelegate {
     
-    var delegate: RepositoryDelegate? = nil
+    weak var delegate: RepositoryDelegate? = nil
     lazy var connector = RepositoriesConnector(delegate: self)
     
     init(delegate: RepositoryDelegate) {

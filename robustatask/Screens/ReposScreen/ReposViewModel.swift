@@ -7,14 +7,14 @@
 
 import Foundation
 
-protocol ReposViewModelDelegate {
+protocol ReposViewModelDelegate: class {
     func didGetRepositories(_ repos: [RepositoryModel])
     func errorInRetrivingData(error: ErrorResponse)
 }
 
 class ReposViewModel {
     lazy var reposity: RepositoriesRepository = RepositoriesRepository(delegate: self)
-    var delegate: ReposViewModelDelegate? = nil
+    weak var delegate: ReposViewModelDelegate? = nil
     var since: Int = 0
     
     func getRepositories() {
