@@ -12,11 +12,10 @@ class ReposViewController: UIViewController {
     // MARK:- Outlets
     @IBOutlet weak var reposTableView: UITableView!
     @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
-    
     var refreshControl = UIRefreshControl()
+    
     var vm: ReposViewModel = ReposViewModel()
     var since = 0
-    
     var repos: [RepositoryModel] = [] {
         didSet {
             DispatchQueue.main.async {
@@ -36,6 +35,8 @@ class ReposViewController: UIViewController {
     }
     
     private func initUI() {
+        self.hideKeyboardWhenTappedAround()
+        
         self.refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
         self.refreshControl.addTarget(self, action: #selector(self.refresh), for: UIControl.Event.valueChanged)
         self.reposTableView.refreshControl = self.refreshControl
@@ -76,7 +77,7 @@ extension ReposViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        // TODO: navigate to another screen
+        // TODO: navigate to repos detail screen
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
