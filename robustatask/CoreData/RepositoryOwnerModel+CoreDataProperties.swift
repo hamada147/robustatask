@@ -9,7 +9,6 @@
 import Foundation
 import CoreData
 
-
 extension RepositoryOwnerModel {
 
     @nonobjc public class func createFetchRequest() -> NSFetchRequest<RepositoryOwnerModel> {

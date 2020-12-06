@@ -9,7 +9,6 @@
 import Foundation
 import CoreData
 
-
 extension RepositoryModel {
 
     @nonobjc public class func createFetchRequest() -> NSFetchRequest<RepositoryModel> {
