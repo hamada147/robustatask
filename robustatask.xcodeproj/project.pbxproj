@@ -14,6 +14,7 @@
 		04843F2D257D1921006FBD21 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04843F2C257D1921006FBD21 /* Reachability.swift */; };
 		04843F32257D1DC6006FBD21 /* ReposViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04843F31257D1DC6006FBD21 /* ReposViewModel.swift */; };
 		04843F3A257D31AB006FBD21 /* UIViewController+Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04843F39257D31AB006FBD21 /* UIViewController+Keyboard.swift */; };
+		04843F43257D3D60006FBD21 /* UIImageView+AsyncImageDownload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04843F42257D3D60006FBD21 /* UIImageView+AsyncImageDownload.swift */; };
 		049C7E2A257CE79500983E8B /* ErrorResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 049C7E15257CE79500983E8B /* ErrorResponse.m */; };
 		049C7E2B257CE79500983E8B /* RepositoriesResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 049C7E17257CE79500983E8B /* RepositoriesResponse.m */; };
 		049C7E2C257CE79500983E8B /* RepositoriesRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 049C7E19257CE79500983E8B /* RepositoriesRequest.m */; };
@@ -63,6 +64,7 @@
 		04843F2C257D1921006FBD21 /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		04843F31257D1DC6006FBD21 /* ReposViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReposViewModel.swift; sourceTree = "<group>"; };
 		04843F39257D31AB006FBD21 /* UIViewController+Keyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Keyboard.swift"; sourceTree = "<group>"; };
+		04843F42257D3D60006FBD21 /* UIImageView+AsyncImageDownload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+AsyncImageDownload.swift"; sourceTree = "<group>"; };
 		049C7E11257CE79500983E8B /* ResponseBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResponseBase.h; sourceTree = "<group>"; };
 		049C7E12257CE79500983E8B /* ConnectorDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConnectorDelegate.h; sourceTree = "<group>"; };
 		049C7E13257CE79500983E8B /* ConnectorBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConnectorBase.h; sourceTree = "<group>"; };
@@ -147,6 +149,7 @@
 			children = (
 				04843F2C257D1921006FBD21 /* Reachability.swift */,
 				04843F39257D31AB006FBD21 /* UIViewController+Keyboard.swift */,
+				04843F42257D3D60006FBD21 /* UIImageView+AsyncImageDownload.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -451,6 +454,7 @@
 				049C7E33257CE79500983E8B /* LoggingManager.m in Sources */,
 				049C7E56257CF3FD00983E8B /* RepositoriesRepository.swift in Sources */,
 				04078470257D149C007C0BEC /* RepositoryModel+CoreDataProperties.swift in Sources */,
+				04843F43257D3D60006FBD21 /* UIImageView+AsyncImageDownload.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

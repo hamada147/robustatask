@@ -11,7 +11,13 @@ class RepoTableViewCell: UITableViewCell {
 
     // MARK:- Outlets
     @IBOutlet weak var repoNameLbl: UILabel!
-    @IBOutlet weak var repoDescLbl: UILabel!
+    @IBOutlet weak var reoAuthorName: UILabel!
+    @IBOutlet weak var repoAuthorImg: UIImageView!
+    var imageURL: String = "" {
+        didSet {
+            self.repoAuthorImg.downloaded(from: self.imageURL)
+        }
+    }
     
     // MARK:- Lifecycle
     override func awakeFromNib() {

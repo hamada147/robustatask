@@ -70,11 +70,8 @@ extension ReposViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "RepoTableViewCell") as! RepoTableViewCell
         cell.repoNameLbl.text = self.repos[indexPath.row].name
-        var desc = self.repos[indexPath.row].repositoryDescription
-        if (desc == "") {
-            desc = "No description was provided"
-        }
-        cell.repoDescLbl.text = desc
+        cell.reoAuthorName.text = self.repos[indexPath.row].ownerRelationship?.login
+        cell.imageURL = self.repos[indexPath.row].ownerRelationship?.avatarURL ?? ""
         return cell
     }
     
