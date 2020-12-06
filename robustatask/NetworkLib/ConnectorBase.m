@@ -53,10 +53,29 @@
                                   completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         if (error == nil)
         {
-            self.response = [self createResponseFor:self.request];
-            self.response.data = (NSMutableData*)data;
-            [self.response fromData];
-            [self.delegate callCompleted:self.response];
+            NSHTTPURLResponse* status = (NSHTTPURLResponse*)response;
+            if (status.statusCode == 200)
+            {
+                self.response = [self createResponseFor:self.request];
+                self.response.data = (NSMutableData*)data;
+                [self.response fromData];
+                [self.delegate callCompleted:self.response];
+            }
+            else if (status.statusCode == 403)
+            {
+                NSError* error;
+                NSDictionary* mappingDictionary = [NSJSONSerialization JSONObjectWithData:(NSMutableData*)data options:kNilOptions error:&error];
+                NSString* msg = [mappingDictionary objectForKey:@"message"];
+                [LoggingManager logError:msg];
+                ErrorResponse* errorObj = [[ErrorResponse alloc] initWith:msg];
+                [self.delegate callFailed:errorObj];
+            }
+            else
+            {
+                [LoggingManager logError:@"Unable to connect to Server"];
+                ErrorResponse* errorObj = [[ErrorResponse alloc] initWith:@"Unable to connect to Server"];
+                [self.delegate callFailed:errorObj];
+            }
         }
         else
         {
