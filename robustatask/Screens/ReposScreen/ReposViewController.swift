@@ -11,6 +11,7 @@ class ReposViewController: UIViewController {
 
     // MARK:- Outlets
     @IBOutlet weak var reposTableView: UITableView!
+    @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
     
     var refreshControl = UIRefreshControl()
     var vm: ReposViewModel = ReposViewModel()
@@ -31,6 +32,7 @@ class ReposViewController: UIViewController {
         self.vm.delegate = self
         self.initUI()
         self.vm.getRepositories(since: self.since)
+        self.loadingIndicator.isHidden = false
     }
     
     private func initUI() {
@@ -87,6 +89,7 @@ extension ReposViewController: ReposViewModelDelegate {
         self.repos = repos
         self.since = Int(self.repos[self.repos.count - 1].id)
         self.refreshControl.endRefreshing()
+        self.loadingIndicator.isHidden = true
     }
     
     func errorInRetrivingData(error: ErrorResponse) {
