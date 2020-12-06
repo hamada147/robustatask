@@ -7,6 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		049C7E2A257CE79500983E8B /* ErrorResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 049C7E15257CE79500983E8B /* ErrorResponse.m */; };
+		049C7E2B257CE79500983E8B /* RepositoriesResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 049C7E17257CE79500983E8B /* RepositoriesResponse.m */; };
+		049C7E2C257CE79500983E8B /* RepositoriesRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 049C7E19257CE79500983E8B /* RepositoriesRequest.m */; };
+		049C7E2D257CE79500983E8B /* RepositoriesConnector.m in Sources */ = {isa = PBXBuildFile; fileRef = 049C7E1C257CE79500983E8B /* RepositoriesConnector.m */; };
+		049C7E2E257CE79500983E8B /* RepositoryOwner.m in Sources */ = {isa = PBXBuildFile; fileRef = 049C7E20257CE79500983E8B /* RepositoryOwner.m */; };
+		049C7E2F257CE79500983E8B /* Repository.m in Sources */ = {isa = PBXBuildFile; fileRef = 049C7E21257CE79500983E8B /* Repository.m */; };
+		049C7E30257CE79500983E8B /* ResponseBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 049C7E23257CE79500983E8B /* ResponseBase.m */; };
+		049C7E31257CE79500983E8B /* RequestBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 049C7E24257CE79500983E8B /* RequestBase.m */; };
+		049C7E32257CE79500983E8B /* ConnectorBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 049C7E25257CE79500983E8B /* ConnectorBase.m */; };
+		049C7E33257CE79500983E8B /* LoggingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 049C7E29257CE79500983E8B /* LoggingManager.m */; };
 		04F8CFA0257940E300E247F1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F8CF9F257940E300E247F1 /* AppDelegate.swift */; };
 		04F8CFA2257940E300E247F1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F8CFA1257940E300E247F1 /* SceneDelegate.swift */; };
 		04F8CFA4257940E300E247F1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F8CFA3257940E300E247F1 /* ViewController.swift */; };
@@ -36,6 +46,29 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		049C7E11257CE79500983E8B /* ResponseBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResponseBase.h; sourceTree = "<group>"; };
+		049C7E12257CE79500983E8B /* ConnectorDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConnectorDelegate.h; sourceTree = "<group>"; };
+		049C7E13257CE79500983E8B /* ConnectorBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConnectorBase.h; sourceTree = "<group>"; };
+		049C7E14257CE79500983E8B /* RequestBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RequestBase.h; sourceTree = "<group>"; };
+		049C7E15257CE79500983E8B /* ErrorResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ErrorResponse.m; sourceTree = "<group>"; };
+		049C7E17257CE79500983E8B /* RepositoriesResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RepositoriesResponse.m; sourceTree = "<group>"; };
+		049C7E18257CE79500983E8B /* RepositoriesConnector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RepositoriesConnector.h; sourceTree = "<group>"; };
+		049C7E19257CE79500983E8B /* RepositoriesRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RepositoriesRequest.m; sourceTree = "<group>"; };
+		049C7E1A257CE79500983E8B /* RepositoriesResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RepositoriesResponse.h; sourceTree = "<group>"; };
+		049C7E1B257CE79500983E8B /* RepositoriesRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RepositoriesRequest.h; sourceTree = "<group>"; };
+		049C7E1C257CE79500983E8B /* RepositoriesConnector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RepositoriesConnector.m; sourceTree = "<group>"; };
+		049C7E1E257CE79500983E8B /* RepositoryOwner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RepositoryOwner.h; sourceTree = "<group>"; };
+		049C7E1F257CE79500983E8B /* Repository.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Repository.h; sourceTree = "<group>"; };
+		049C7E20257CE79500983E8B /* RepositoryOwner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RepositoryOwner.m; sourceTree = "<group>"; };
+		049C7E21257CE79500983E8B /* Repository.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Repository.m; sourceTree = "<group>"; };
+		049C7E22257CE79500983E8B /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		049C7E23257CE79500983E8B /* ResponseBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResponseBase.m; sourceTree = "<group>"; };
+		049C7E24257CE79500983E8B /* RequestBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RequestBase.m; sourceTree = "<group>"; };
+		049C7E25257CE79500983E8B /* ConnectorBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConnectorBase.m; sourceTree = "<group>"; };
+		049C7E26257CE79500983E8B /* ErrorResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ErrorResponse.h; sourceTree = "<group>"; };
+		049C7E28257CE79500983E8B /* LoggingManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoggingManager.h; sourceTree = "<group>"; };
+		049C7E29257CE79500983E8B /* LoggingManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoggingManager.m; sourceTree = "<group>"; };
+		049C7E37257CE85400983E8B /* robustatask_BridgingHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = robustatask_BridgingHeader.h; sourceTree = "<group>"; };
 		04F8CF9C257940E300E247F1 /* robustatask.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = robustatask.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04F8CF9F257940E300E247F1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		04F8CFA1257940E300E247F1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -78,6 +111,59 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		049C7E10257CE79500983E8B /* NetworkLib */ = {
+			isa = PBXGroup;
+			children = (
+				049C7E1D257CE79500983E8B /* Models */,
+				049C7E16257CE79500983E8B /* Repositories */,
+				049C7E12257CE79500983E8B /* ConnectorDelegate.h */,
+				049C7E22257CE79500983E8B /* Constants.h */,
+				049C7E11257CE79500983E8B /* ResponseBase.h */,
+				049C7E23257CE79500983E8B /* ResponseBase.m */,
+				049C7E13257CE79500983E8B /* ConnectorBase.h */,
+				049C7E25257CE79500983E8B /* ConnectorBase.m */,
+				049C7E14257CE79500983E8B /* RequestBase.h */,
+				049C7E24257CE79500983E8B /* RequestBase.m */,
+				049C7E26257CE79500983E8B /* ErrorResponse.h */,
+				049C7E15257CE79500983E8B /* ErrorResponse.m */,
+				049C7E27257CE79500983E8B /* Logging */,
+			);
+			path = NetworkLib;
+			sourceTree = "<group>";
+		};
+		049C7E16257CE79500983E8B /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				049C7E17257CE79500983E8B /* RepositoriesResponse.m */,
+				049C7E18257CE79500983E8B /* RepositoriesConnector.h */,
+				049C7E19257CE79500983E8B /* RepositoriesRequest.m */,
+				049C7E1A257CE79500983E8B /* RepositoriesResponse.h */,
+				049C7E1B257CE79500983E8B /* RepositoriesRequest.h */,
+				049C7E1C257CE79500983E8B /* RepositoriesConnector.m */,
+			);
+			path = Repositories;
+			sourceTree = "<group>";
+		};
+		049C7E1D257CE79500983E8B /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				049C7E1E257CE79500983E8B /* RepositoryOwner.h */,
+				049C7E1F257CE79500983E8B /* Repository.h */,
+				049C7E20257CE79500983E8B /* RepositoryOwner.m */,
+				049C7E21257CE79500983E8B /* Repository.m */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		049C7E27257CE79500983E8B /* Logging */ = {
+			isa = PBXGroup;
+			children = (
+				049C7E28257CE79500983E8B /* LoggingManager.h */,
+				049C7E29257CE79500983E8B /* LoggingManager.m */,
+			);
+			path = Logging;
+			sourceTree = "<group>";
+		};
 		04F8CF93257940E300E247F1 = {
 			isa = PBXGroup;
 			children = (
@@ -101,6 +187,7 @@
 		04F8CF9E257940E300E247F1 /* robustatask */ = {
 			isa = PBXGroup;
 			children = (
+				049C7E10257CE79500983E8B /* NetworkLib */,
 				04F8CF9F257940E300E247F1 /* AppDelegate.swift */,
 				04F8CFA1257940E300E247F1 /* SceneDelegate.swift */,
 				04F8CFA3257940E300E247F1 /* ViewController.swift */,
@@ -109,6 +196,7 @@
 				04F8CFAD257940E700E247F1 /* LaunchScreen.storyboard */,
 				04F8CFB0257940E700E247F1 /* Info.plist */,
 				04F8CFA8257940E300E247F1 /* robustatask.xcdatamodeld */,
+				049C7E37257CE85400983E8B /* robustatask_BridgingHeader.h */,
 			);
 			path = robustatask;
 			sourceTree = "<group>";
@@ -261,10 +349,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				049C7E2E257CE79500983E8B /* RepositoryOwner.m in Sources */,
+				049C7E2F257CE79500983E8B /* Repository.m in Sources */,
 				04F8CFA4257940E300E247F1 /* ViewController.swift in Sources */,
 				04F8CFA0257940E300E247F1 /* AppDelegate.swift in Sources */,
+				049C7E31257CE79500983E8B /* RequestBase.m in Sources */,
+				049C7E2B257CE79500983E8B /* RepositoriesResponse.m in Sources */,
 				04F8CFA2257940E300E247F1 /* SceneDelegate.swift in Sources */,
+				049C7E30257CE79500983E8B /* ResponseBase.m in Sources */,
+				049C7E2C257CE79500983E8B /* RepositoriesRequest.m in Sources */,
+				049C7E32257CE79500983E8B /* ConnectorBase.m in Sources */,
+				049C7E2D257CE79500983E8B /* RepositoriesConnector.m in Sources */,
+				049C7E2A257CE79500983E8B /* ErrorResponse.m in Sources */,
 				04F8CFAA257940E300E247F1 /* robustatask.xcdatamodeld in Sources */,
+				049C7E33257CE79500983E8B /* LoggingManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -449,6 +547,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = tech.moussa.robustatask;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = robustatask/robustatask_BridgingHeader.h;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -468,6 +567,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = tech.moussa.robustatask;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = robustatask/robustatask_BridgingHeader.h;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
