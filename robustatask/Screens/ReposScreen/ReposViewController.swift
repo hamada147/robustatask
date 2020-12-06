@@ -12,7 +12,9 @@ class ReposViewController: UIViewController {
     // MARK:- Outlets
     @IBOutlet weak var reposTableView: UITableView!
     
+    var refreshControl = UIRefreshControl()
     var vm: ReposViewModel = ReposViewModel()
+    var since = 0
     
     var repos: [RepositoryModel] = [] {
         didSet {
@@ -28,14 +30,25 @@ class ReposViewController: UIViewController {
         // Do any additional setup after loading the view.
         self.vm.delegate = self
         self.initUI()
-        self.vm.getRepositories(since: 0)
+        self.vm.getRepositories(since: self.since)
     }
     
     private func initUI() {
+        self.refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        self.refreshControl.addTarget(self, action: #selector(self.refresh), for: UIControl.Event.valueChanged)
+        self.reposTableView.refreshControl = self.refreshControl
+        
         self.reposTableView.register(UINib(nibName: "RepoTableViewCell", bundle: nil), forCellReuseIdentifier: "RepoTableViewCell")
         self.reposTableView.delegate = self
         self.reposTableView.dataSource = self
         self.reposTableView.tableFooterView = UIView()
+    }
+    
+    @objc
+    func refresh(sender: Any) {
+        self.since = 0
+        self.refreshControl.beginRefreshing()
+        self.vm.getRepositories(since: self.since)
     }
 }
 
@@ -58,6 +71,8 @@ extension ReposViewController: UITableViewDelegate, UITableViewDataSource {
 extension ReposViewController: ReposViewModelDelegate {
     func didGetRepositories(_ repos: [RepositoryModel]) {
         self.repos = repos
+        self.since = Int(self.repos[self.repos.count - 1].id)
+        self.refreshControl.endRefreshing()
     }
     
     func errorInRetrivingData(error: ErrorResponse) {
