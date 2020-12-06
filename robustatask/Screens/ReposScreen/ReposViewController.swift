@@ -16,7 +16,6 @@ class ReposViewController: UIViewController {
     var refreshControl = UIRefreshControl()
     
     var vm: ReposViewModel = ReposViewModel()
-    var since = 0
     var repos: [RepositoryModel] = [] {
         didSet {
             DispatchQueue.main.async {
@@ -31,7 +30,7 @@ class ReposViewController: UIViewController {
         // Do any additional setup after loading the view.
         self.vm.delegate = self
         self.initUI()
-        self.vm.getRepositories(since: self.since)
+        self.vm.getRepositories()
         self.loadingIndicator.isHidden = false
     }
     
@@ -52,9 +51,9 @@ class ReposViewController: UIViewController {
     
     @objc
     func refresh(sender: Any) {
-        self.since = 0
+        self.vm.since = 0
         self.refreshControl.beginRefreshing()
-        self.vm.getRepositories(since: self.since)
+        self.vm.getRepositories()
     }
 }
 
@@ -92,7 +91,6 @@ extension ReposViewController: UITableViewDelegate, UITableViewDataSource {
 extension ReposViewController: ReposViewModelDelegate {
     func didGetRepositories(_ repos: [RepositoryModel]) {
         self.repos = repos
-        self.since = Int(self.repos[self.repos.count - 1].id)
         self.refreshControl.endRefreshing()
         self.loadingIndicator.isHidden = true
     }
@@ -107,12 +105,11 @@ extension ReposViewController: ReposViewModelDelegate {
 extension ReposViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if (searchText.count >= 2) {
-            self.since = 0
             self.loadingIndicator.isHidden = false
             self.vm.searchRepo(search: searchText)
         } else {
             self.loadingIndicator.isHidden = false
-            self.vm.getRepositories(since: self.since)
+            self.vm.getRepositories()
         }
     }
 }
