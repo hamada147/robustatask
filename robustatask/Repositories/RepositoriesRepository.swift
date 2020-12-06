@@ -38,7 +38,9 @@ class RepositoriesRepository: NSObject, RepositoriesRepositoryInterface, Connect
             
             do {
                 let repos = try managedContext.fetch(request)
-                self.delegate?.onSuccess(response: repos)
+                let response = RepositoriesResponse()
+                response.repositories = repos
+                self.delegate?.onSuccess(response: response)
             } catch let error as NSError {
                 LoggingManager.logError(error.localizedDescription)
                 let error = ErrorResponse(error.localizedDescription)
@@ -80,6 +82,7 @@ class RepositoriesRepository: NSObject, RepositoriesRepositoryInterface, Connect
                 for repo in repos {
                     self.save(repo: repo)
                 }
+                self.delegate?.onSuccess(response: actualResponse)
             }
         }
     }
