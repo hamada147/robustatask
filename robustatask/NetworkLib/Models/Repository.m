@@ -77,6 +77,15 @@
     self.releases_url = [dictionary objectForKey:@"releases_url"];
     
     self.deployments_url = [dictionary objectForKey:@"deployments_url"];
+    
+    if ([dictionary objectForKey:@"created_at"] != nil)
+    {
+        self.created_at = [dictionary objectForKey:@"created_at"];
+    }
+    else
+    {
+        self.created_at = @"";
+    }
 }
 
 @end

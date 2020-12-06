@@ -76,6 +76,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonatomic) NSString* releases_url;
 
 @property (strong, nonatomic) NSString* deployments_url;
+@property (strong, nonatomic) NSString* created_at;
 
 -(void)mapCustomFieldsfromDictionary:(NSDictionary *)dictionary;
 
