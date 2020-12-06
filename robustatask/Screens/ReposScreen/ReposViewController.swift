@@ -68,9 +68,7 @@ extension ReposViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "RepoTableViewCell") as! RepoTableViewCell
-        cell.repoNameLbl.text = self.repos[indexPath.row].name
-        cell.reoAuthorName.text = self.repos[indexPath.row].ownerRelationship?.login
-        cell.imageURL = self.repos[indexPath.row].ownerRelationship?.avatarURL ?? ""
+        cell.vm = RepoTableViewModel(repo: self.repos[indexPath.row])
         return cell
     }
     
@@ -97,7 +95,11 @@ extension ReposViewController: ReposViewModelDelegate {
     
     func errorInRetrivingData(error: ErrorResponse) {
         DispatchQueue.main.async {
-            // TODO: Show Error UI Here
+            let alert = UIAlertController(title: "Error", message: error.errorMessage, preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "Okay", style: UIAlertAction.Style.default, handler: {_ in
+                self.loadingIndicator.isHidden = true
+            }))
+            self.present(alert, animated: true, completion: nil)
         }
     }
 }
