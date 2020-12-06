@@ -64,7 +64,11 @@ extension ReposViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "RepoTableViewCell") as! RepoTableViewCell
         cell.repoNameLbl.text = self.repos[indexPath.row].name
-        cell.repoDescLbl.text = self.repos[indexPath.row].repositoryDescription
+        var desc = self.repos[indexPath.row].repositoryDescription
+        if (desc == "") {
+            desc = "No description was provided"
+        }
+        cell.repoDescLbl.text = desc
         return cell
     }
     
@@ -74,7 +78,7 @@ extension ReposViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 120.0
+        return 130.0
     }
 }
 
